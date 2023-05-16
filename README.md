@@ -17,3 +17,11 @@ $ npm test
 # Format with prettier
 $ npm run format
 ```
+
+.env file (example=:
+
+```
+EMAIL_LOGIN = "hayden20@ethereal.email"
+EMAIL_PASSWORD = "<YOUR-PW>"
+EMAIL_HOST = "smtp.ethereal.email"
+```

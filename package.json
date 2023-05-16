@@ -27,6 +27,7 @@
     "@sinclair/typebox": "^0.25.13",
     "dotenv": "^16.0.0",
     "fastify": "^4.10.2",
+    "nodemailer": "^6.9.2",
     "tslib": "^2.3.1"
   },
   "devDependencies": {
@@ -36,6 +37,7 @@
     "@jest/types": "^28.0.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^18.11.17",
+    "@types/nodemailer": "^6.4.7",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
@@ -50,7 +52,6 @@
     "lint-staged": "^13.0.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.1",
-    "prisma": "^4.7.1",
     "supertest": "^6.2.2",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.9.1",
