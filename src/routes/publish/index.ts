@@ -23,10 +23,8 @@ const createNodeMailer = () => {
 };
 
 const sendMail = (maillist: any, subject: any, text: any, transporter: nodemailer.Transporter) => {
-    const email = process.env.EMAIL;
-
     const mailOptions = {
-        from: `"Inno Center 🚬" <${email}>`,
+        from: "Inno Center",
         to: maillist,
         subject: subject,
         text: text,
@@ -61,6 +59,7 @@ export default async function (fastify: FastifyInstance) {
                 .catch(error => {
                     fastify.log.error("Mail was not sent - error: ", error);
                     reply.code(400).send();
+                    throw error;
                 })
                 .finally(() => {
                     transporter.close();
