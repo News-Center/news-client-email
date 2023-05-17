@@ -57,7 +57,7 @@ export default async function (fastify: FastifyInstance) {
                     reply.code(200).send();
                 })
                 .catch(error => {
-                    fastify.log.error("Mail was not sent - error: ", error);
+                    fastify.log.error("Mail was not sent - error: \n" + JSON.stringify(error));
                     reply.code(400).send();
                     throw error;
                 })
