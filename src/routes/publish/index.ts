@@ -1,6 +1,6 @@
-import { FastifyInstance } from "fastify";
+import { FastifyBaseLogger, FastifyInstance } from "fastify";
 import * as dotenv from "dotenv";
-import nodemailer from "nodemailer";
+import nodemailer, { Transporter } from "nodemailer";
 
 import { PublishSchema, PublishType } from "../../schema/publish";
 
@@ -22,13 +22,15 @@ const createNodeMailer = () => {
     });
 };
 
-const sendMail = (maillist: any, subject: any, text: any, transporter: nodemailer.Transporter) => {
+const sendMail = (maillist: any, subject: any, text: any, transporter: Transporter, log: FastifyBaseLogger) => {
     const mailOptions = {
         from: "Inno Center",
         to: maillist,
         subject: subject,
         text: text,
     };
+
+    log.info(JSON.stringify(mailOptions));
 
     return transporter.sendMail(mailOptions);
 };
@@ -52,7 +54,7 @@ export default async function (fastify: FastifyInstance) {
             const { handle, content, title } = request.body;
             const transporter = createNodeMailer();
 
-            sendMail([handle], title, content, transporter)
+            sendMail([handle], title, content, transporter, fastify.log)
                 .then(_info => {
                     reply.code(200).send();
                 })
