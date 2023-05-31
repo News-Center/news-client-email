@@ -11,10 +11,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 import { swaggerOpts, swaggerUiOpts } from "./utils/swagger";
+import cors from "@fastify/cors";
 
 export function createServer(opts: FastifyServerOptions = {}): FastifyInstance {
     const app = fastify(opts).withTypeProvider<TypeBoxTypeProvider>();
 
+    app.register(cors);
     app.register(swagger, swaggerOpts);
     app.register(swaggerUI, swaggerUiOpts);
 
